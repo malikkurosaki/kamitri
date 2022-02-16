@@ -4,7 +4,6 @@ const api = express.Router();
 
 api.get('/getProdak', getProdak)
 
-
 module.exports = {
     api
 }
