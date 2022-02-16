@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Prodak {
+  id         String    @id @default(uuid())
+  nama       String    @unique
+  harga      Int
+  ket        String @default("")
+  Kategori   Kategori? @relation(fields: [kategoriId], references: [id])
+  kategoriId String?
+  diBuat     DateTime  @default(now())
+  diUpdet    DateTime  @default(now())
+}
+
+model Kategori {
+  id      String   @id @default(uuid())
+  nama    String
+  Prodak  Prodak[]
+  diBuat  DateTime @default(now())
+  diUpdet DateTime @default(now())
+}
+
+model Nota {
+  id         String       @id @default(uuid())
+  NotaDetail NotaDetail[]
+  dibuat     DateTime     @default(now())
+  diUpdet    DateTime     @default(now())
+}
+
+model NotaDetail {
+  id      String   @id @default(uuid())
+  Nota    Nota?    @relation(fields: [notaId], references: [id])
+  diBuat  DateTime @default(now())
+  diUpdet DateTime @default(now())
+  notaId  String?
+}

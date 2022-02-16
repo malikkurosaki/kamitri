@@ -1,0 +1,12 @@
+-- DropForeignKey
+ALTER TABLE `NotaDetail` DROP FOREIGN KEY `NotaDetail_notaId_fkey`;
+
+-- AlterTable
+ALTER TABLE `Kategori` ADD COLUMN `diBuat` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    ADD COLUMN `diUpdet` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3);
+
+-- AlterTable
+ALTER TABLE `NotaDetail` MODIFY `notaId` VARCHAR(191) NULL;
+
+-- AddForeignKey
+ALTER TABLE `NotaDetail` ADD CONSTRAINT `NotaDetail_notaId_fkey` FOREIGN KEY (`notaId`) REFERENCES `Nota`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

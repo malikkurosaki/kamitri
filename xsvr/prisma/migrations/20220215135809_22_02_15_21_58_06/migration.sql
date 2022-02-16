@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Prodak` MODIFY `ket` VARCHAR(191) NOT NULL DEFAULT '';
