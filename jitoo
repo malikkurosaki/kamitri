@@ -28,6 +28,7 @@ perintah1() {
     build | -b) flutter build web --release ;;
     mig | -m) prisma migrate dev --name $tm && prisma generate ;;
     push | -p)
+        flutter build web --release
         git add .
         git commit -m "push"
         git push -u origin main
