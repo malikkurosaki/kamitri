@@ -1,8 +1,12 @@
 const express = require('express');
-const { getProdak } = require('./api_prodak');
+const { Login } = require('./controllers/login');
+const { Product } = require('./controllers/product');
+const { Register } = require('./controllers/register');
 const api = express.Router();
 
-api.get('/getProdak', getProdak)
+api.post('/login', Login)
+api.post('/register', Register);
+api.get('/product', Product)
 
 module.exports = {
     api

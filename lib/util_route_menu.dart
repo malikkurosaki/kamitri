@@ -32,6 +32,9 @@ class RouteMenu{
     child: child
   );
 
+  goOff() => Get.offNamed(key); 
+  goTo() => Get.toNamed(key);
+
   static final listPage = <GetPage>[
     GetPage(name: RouteMenu.main().get(), page: () => Root(),),
     GetPage(name: RouteMenu.home().get(), page: () => Home(),),

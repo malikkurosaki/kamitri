@@ -18,7 +18,7 @@ class HomeListProduct extends StatelessWidget {
       children: [
         Row(
           children: [
-            BackButton(),
+            const BackButton(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -28,7 +28,7 @@ class HomeListProduct extends StatelessWidget {
                     width: Get.width /2,
                     child: TextFormField(
                       onChanged: (value) => Val.listProductSearch.value = value,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         isDense: true,
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(),
@@ -49,7 +49,7 @@ class HomeListProduct extends StatelessWidget {
                 Visibility(
                   visible: !layar.isMobile,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       border: Border(right: BorderSide(color: Colors.black12))
                     ),
                     height: double.infinity,
@@ -61,7 +61,7 @@ class HomeListProduct extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text("Kategori")
+                            const Text("Kategori")
                           ],
                         ),
                       ),
@@ -75,7 +75,7 @@ class HomeListProduct extends StatelessWidget {
                       children: [
                         for(final p in Val.listProduct)
                         Visibility(
-                          visible: p['nama'].toString().contains(Val.listProductSearch.value),
+                          visible: p['name'].toString().contains(Val.listProductSearch.value),
                           child: InkWell(
                             onTap: () {
                               if(Val.listOrder.map((element) => element['id']).toList().contains(p['id'])){
@@ -107,8 +107,8 @@ class HomeListProduct extends StatelessWidget {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(p['nama'].toString(), overflow: TextOverflow.ellipsis,),
-                                          Text(p['harga'].toString()),
+                                          Text(p['name'].toString(), overflow: TextOverflow.ellipsis,),
+                                          Text(p['price'].toString()),
                                         ],
                                       ),
                                     )

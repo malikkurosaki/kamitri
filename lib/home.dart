@@ -15,19 +15,9 @@ class Home extends StatelessWidget {
     return ResponsiveBuilder(
       builder: (context, layar) => Scaffold(
         appBar: layar.isMobile? AppBar(
-          title: Text("Kamitri"),
-          actions: [
-            IconButton(
-              onPressed: (){
-                Get.dialog(Dialog(
-                  child: HomeListProduct(),
-                ),);
-              }, 
-              icon: Icon(Icons.add_box)
-            )
-          ],
+          title: const Text("Kamitri"),
         ): null,
-        drawer: layar.isMobile? Drawer(
+        drawer: layar.isMobile? const Drawer(
           child: HomeMenu(),
         ): null,
         body: Column(
@@ -38,9 +28,9 @@ class Home extends StatelessWidget {
               visible: !layar.isMobile,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: const[
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Kami Tri",
                       style: TextStyle(
                         color: Colors.black45,
@@ -48,14 +38,6 @@ class Home extends StatelessWidget {
                       ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: (){
-                      Get.dialog(Dialog(
-                        child: HomeListProduct(),
-                      ));
-                    }, 
-                    icon: Icon(Icons.add_box_rounded)
-                  )
                 ],
               ),
             ),
@@ -67,16 +49,16 @@ class Home extends StatelessWidget {
                     visible: !layar.isMobile,
                     child: Container(
                       height: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border:
                               Border(right: BorderSide(color: Colors.black12))),
                       width: Get.width / 4,
-                      child: SingleChildScrollView(
+                      child: const SingleChildScrollView(
                         child: HomeMenu(),
                       ),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: SingleChildScrollView(
                       child: HomeContent(),
                     ),

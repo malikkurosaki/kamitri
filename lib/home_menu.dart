@@ -13,7 +13,7 @@ class HomeMenu extends StatelessWidget {
         children: [
           RouteMenu.home().menuItem("Home"),
           RouteMenu.profile().menuItem("Profile"),
-           RouteMenu.kasir().menuItem("Kasir"),
+          RouteMenu.kasir().menuItem("Kasir"),
         ],
       ),
     );

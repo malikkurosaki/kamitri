@@ -4,4 +4,5 @@ class Val{
   static final listOrder = [].obs;
   static final listProduct = [].obs;
   static final listProductSearch = "".obs;
+  static final isLogin = false.obs;
 }
