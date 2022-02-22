@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+tm=$(date +"%Y%m%d%H%M%S")
+
+pm2 stop all
+git pull origin main
+source ~/.nvm/nvm.sh
+npm install
+prisma migrate dev --name $tm && prisma generate
+pm2 restart all
+
