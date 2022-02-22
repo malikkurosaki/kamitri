@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+login="sshpass -p StartOurDream2022 ssh posapp@116.193.191.104"
+help() {
+    echo "$(tput setaf 3)
+   --------------------------------------------------
+   Jitooid                                       MENU
+   --------------------------------------------------
+    runs | -rs                   run server
+    runc | -rc                   run client
+    build | -b                   build flutter
+
+
+
+
+   --------------------------------------------------
+   Malikkurosaki@2022                            v001
+    
+   $(tput sgr0)"
+}
+
+perintah1() {
+    case $1 in
+    runs | -rs) cd xsvr && nodemon svr.js ;;
+    runc | -rc) flutter run -d chrome --web-renderer html ;;
+    build | -b) flutter build web --release ;;
+    push | -p)
+        git add .
+        git commit -m "push"
+        git push -u origin main
+        $login "cd ~/kamitri && git pull origin main"
+        ;;
+    *) echo "./jitoo [parameter]" ;;
+    esac
+}
+
+if [ $# -eq 1 ]; then
+    perintah1 $1
+else
+    help
+fi

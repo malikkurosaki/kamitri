@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
-      title: "KamiTri",
+      title: "Jitoo",
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       getPages: RouteMenu.listPage,

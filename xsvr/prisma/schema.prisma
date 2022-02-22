@@ -10,36 +10,71 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Prodak {
-  id         String    @id @default(uuid())
-  nama       String    @unique
-  harga      Int
-  ket        String @default("")
-  Kategori   Kategori? @relation(fields: [kategoriId], references: [id])
-  kategoriId String?
-  diBuat     DateTime  @default(now())
-  diUpdet    DateTime  @default(now())
+model User {
+  id       String    @id @default(uuid())
+  name     String
+  email    String    @unique
+  password String
+  Profile  Profile[]
+  createAt DateTime  @default(now())
+  updateAt DateTime  @default(now())
 }
 
-model Kategori {
-  id      String   @id @default(uuid())
-  nama    String
-  Prodak  Prodak[]
-  diBuat  DateTime @default(now())
-  diUpdet DateTime @default(now())
+model Outlet {
+  id       String    @id @default(uuid())
+  name     String
+  createAt DateTime  @default(now())
+  updateAt DateTime  @default(now())
+  Profile  Profile[]
 }
 
-model Nota {
+model Profile {
+  id        String  @id @default(uuid())
+  firstName String?
+  lastName  String?
+  address   String?
+  phone     String?
+  gender    String?
+  User      User?   @relation(fields: [userId], references: [id])
+  userId    String?
+  Outlet    Outlet? @relation(fields: [outletId], references: [id])
+  outletId  String?
+}
+
+model Product {
   id         String       @id @default(uuid())
-  NotaDetail NotaDetail[]
-  dibuat     DateTime     @default(now())
-  diUpdet    DateTime     @default(now())
+  name       String       @unique
+  price      Int
+  desc       String?      @default("")
+  Category   Category?    @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  DetailBill DetailBill[]
+  createAt   DateTime     @default(now())
+  updateAt   DateTime     @default(now())
 }
 
-model NotaDetail {
-  id      String   @id @default(uuid())
-  Nota    Nota?    @relation(fields: [notaId], references: [id])
-  diBuat  DateTime @default(now())
-  diUpdet DateTime @default(now())
-  notaId  String?
+model Category {
+  id       String    @id @default(uuid())
+  name     String
+  createAt DateTime  @default(now())
+  updateAt DateTime  @default(now())
+  Product  Product[]
+
+}
+
+model Bill {
+  id           String      @id @default(uuid())
+  DetailBill   DetailBill? @relation(fields: [detailBillId], references: [id])
+  detailBillId String?
+  createAt     DateTime    @default(now())
+  updateAt     DateTime    @default(now())
+}
+
+model DetailBill {
+  id        String   @id @default(uuid())
+  Bill      Bill[]
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+  createAt  DateTime @default(now())
+  updateAt  DateTime @default(now())
 }
