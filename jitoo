@@ -32,7 +32,7 @@ perintah1() {
         git add .
         git commit -m "push"
         git push -u origin main
-        $login -t "cd ~/kamitri && git pull origin main && cd ~/kamitri/xsvr/ && ls"
+        $login -t "cd ~/kamitri && git pull origin main && cd ~/kamitri/xsvr/ && ./build_server"
         ;;
     *) echo "./jitoo [ parameter ] -[ $1 ] belum ada" ;;
     esac
