@@ -27,7 +27,7 @@ perintah1() {
         git add .
         git commit -m "push"
         git push -u origin main
-        $login "cd ~/kamitri && git pull origin main && source ~/.bashrc && npm install && pm2 restart all"
+        $login "cd ~/kamitri && git pull origin main && source ~/.nvm/nvm.sh && npm install && pm2 restart all"
         ;;
     *) echo "./jitoo [parameter]" ;;
     esac
