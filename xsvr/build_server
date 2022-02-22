@@ -4,6 +4,7 @@ tm=$(date +"%Y%m%d%H%M%S")
 source ~/.nvm/nvm.sh
 pm2 stop all
 npm install
-prisma migrate dev --name $tm && prisma generate
+prisma migrate dev --name $tm
+prisma generate
 pm2 restart all
 

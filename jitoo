@@ -37,6 +37,7 @@ perintah1() {
     mysqls | -ms)
         $login -t "mysql -uroot -pMakuro_123"
         ;;
+    ress) $login -t "cd ~/kamitri/xsvr/ && source ~/.nvm/nvm.sh && pm2 restart all" ;;
     *) echo "./jitoo [ parameter ] -[ $1 ] belum ada" ;;
     esac
 }
