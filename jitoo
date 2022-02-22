@@ -6,7 +6,6 @@
 # It will also create a build directory and place the build artifacts there.
 # It will also create a release directory and place the release artifacts there.
 
-
 login="sshpass -p StartOurDream2022 ssh posapp@116.193.191.104"
 help() {
     echo "$(tput setaf 3)
@@ -33,6 +32,10 @@ perintah1() {
         git commit -m "push"
         git push -u origin main
         $login -t "cd ~/kamitri && git pull origin main && cd ~/kamitri/xsvr/ && ./build_server"
+        ;;
+    login | -l) $login ;;
+    mysqls | -ms)
+        $login -t "mysql -uroot -pMakuro_123"
         ;;
     *) echo "./jitoo [ parameter ] -[ $1 ] belum ada" ;;
     esac
